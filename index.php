@@ -23,7 +23,6 @@
 </head>
 
 <body>
-
   <div class="loader"></div>
   <div id="myDiv">
     <!--HEADER-->
@@ -47,7 +46,8 @@
                   <li class=""><a href="#portfolio">Profil Lulusan</a></li>
                   <li class=""><a href="#testimonial">Peluang Kerja</a></li>
                   <li class=""><a href="#blog">Fasilitas</a></li>
-                  <li class=""><a href="#contact">Seleksi Masuk</a></li>
+                  <li class=""><a href="#seleksimasuk">Seleksi Masuk</a></li>
+                    <li class=""><a href="#contact">Hubungi Kami</a></li>
                 </ul>
               </div>
             </div>
@@ -70,6 +70,26 @@
       </div>
     </div>
     <!--/ HEADER-->
+      <!-- Modal -->
+      <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 id="modal-header-text" class="modal-title">Modal Header</h4>
+                  </div>
+                  <div class="modal-body">
+                      <p id="modal-body-text">Some text in the modal.</p>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+              </div>
+
+          </div>
+      </div>
     <!---->
     <section id="service" class="section-padding wow fadeInUp delay-05s">
       <div class="container">
@@ -227,22 +247,22 @@
       </div>
     </section>
     <!---->
-    <section id="contact" class="section-padding wow fadeInUp delay-05s">
+    <section id="seleksimasuk" class="section-padding wow fadeInUp delay-05s">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 text-center white">
+          <div class="col-md-12 text-center">
             <h2 class="service-title pad-bt15">Seleksi Masuk</h2>
-            <hr class="bottom-line white-bg">
+            <hr class="bottom-line">
           </div>
-            <div class="col-md-6 text-center white">
+            <div class="col-md-6 text-center">
                 <h2>SNMPTN</h2>
                 <a href="https://smits.its.ac.id/sarjana/#snmptn" target="_blank">https://smits.its.ac.id/sarjana/#snmptn</a>
             </div>
-            <div class="col-md-6 text-center white">
+            <div class="col-md-6 text-center">
                 <h2>SBMPTN</h2>
                 <a href="https://smits.its.ac.id/sarjana/#sbmptn" target="_blank">https://smits.its.ac.id/sarjana/#sbmptn</a>
             </div>
-            <div class="col-md-12 text-center white">
+            <div class="col-md-12 text-center">
                 <h2>PKM</h2>
                 <a href="https://smits.its.ac.id/sarjana/#pkm" target="_blank">https://smits.its.ac.id/sarjana/#pkm</a>
                 <link>
@@ -251,22 +271,66 @@
       </div>
     </section>
     <!---->
+      <section id="contact" class="section-padding wow fadeInUp delay-05s">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-12 text-center white">
+                      <h2 class="service-title pad-bt15">HUBUNGI KAMI</h2>
+                      <hr class="bottom-line white-bg">
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                      <div class="loction-info white">
+                          <p><i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Jalan Raya ITS, Keputih, Sukolilo, Kota SBY, Jawa Timur</p>
+                          <p><i class="fa fa-envelope-o fa-fw pull-left fa-2x"></i>teknologi.informasi@its.ac.id</p>
+                      </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                      <div class="contact-form">
+                          <form action="" method="post" role="form" class="contactForm">
+                              <div class="col-md-6 padding-right-zero">
+                                  <div class="form-group">
+                                      <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                      <div class="validation"></div>
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                                      <div class="validation"></div>
+                                  </div>
+                              </div>
+                              <div class="col-md-12">
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                                      <div class="validation"></div>
+                                  </div>
+                              </div>
+                              <div class="col-md-12">
+                                  <div class="form-group">
+                                      <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                                      <div class="validation"></div>
+                                  </div>
+                                  <button type="submit" name="submit" class="btn btn-primary btn-submit">SUBMIT</button>
+                              </div>
+                          </form>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
     <!---->
     <footer id="footer">
       <div class="container">
-        <div class="row text-center">
-          <p>Email: teknologi.informasi@its.ac.id</p>
-          <p>&copy; Baker Theme. All Rights Reserved.</p>
-          <div class="credits">
-            <!--
-              All the links in the footer should remain intact.
-              You can delete the links only if you purchased the pro version.
-              Licensing information: https://bootstrapmade.com/license/
-              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Baker
-            -->
-            Designed by <a href="https://bootstrapmade.com/">Bootstrap Templates</a>
+          <div class="row text-center">
+              <div class="col-md-12">
+                  <p>Teknologi Informasi</p>
+                  <p>Fakultas Teknologi Informasi</p>
+                  <p>Institut Teknologi Sepuluh Nopember</p>
+                  <p><b id="hitcounter"></b></p>
+                  <p>&copy; Baker Theme. All Rights Reserved.</p>
+              </div>
           </div>
-        </div>
       </div>
     </footer>
     <!---->
@@ -279,3 +343,47 @@
   <script src="js/custom.js"></script>
 </body>
 </html>
+
+<?php
+include("hitcounter.php");
+$count = getCount();
+echo "<script>
+    var count = $count;
+    document.getElementById(\"hitcounter\").innerText = \"Visitors Counter: \" + count;
+</script>";
+if(isset($_POST['submit'])){
+    $to = "adit393270@gmail.com";
+    $from = $_POST['email'];
+    $name = $_POST['name'];
+    $subject = $_POST['subject'];
+    $subject2 = "Copy of your form submission: " . $_POST['subject'];
+    $message = $name . " " . " wrote the following:" . "\n\n" . $_POST['message'];
+    $message2 = "Here is a copy of your message " . $name . ":\n\n" . $_POST['message'];
+
+    $headers = "From:" . $from;
+    $headers2 = "From:" . $to;
+    if(!empty($from) && !empty(name) && !empty($subject && !empty($message))) {
+        if(mail($to,$subject,$message,$headers) && mail($from,$subject2,$message2,$headers2)) {
+            echo "<script>
+                document.getElementById(\"modal-header-text\").innerText=\"Sukses\"; 
+                document.getElementById(\"modal-body-text\").innerText=\"Pesan anda telah terkirim\"; 
+                $(\"#myModal\").modal() 
+        </script>" ;
+        } else {
+            echo "<script>
+                document.getElementById(\"modal-header-text\").innerText=\"Error\"; 
+                document.getElementById(\"modal-body-text\").innerText=\"Terjadi kesalahan dalam mengirim pesan. Mohon dicoba ulang \"; 
+                $(\"#myModal\").modal() 
+        </script>" ;
+        }
+    }
+    else {
+        echo "<script>
+                document.getElementById(\"modal-header-text\").innerText=\"Error\"; 
+                document.getElementById(\"modal-body-text\").innerText=\"Terdapat kolom yang belum diisi ketika mengirim pesan. \"; 
+                $(\"#myModal\").modal() 
+        </script>" ;
+    }
+}
+?>
+
