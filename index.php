@@ -1,3 +1,18 @@
+<?php
+$servername = "localhost";
+$username = "id4891206_aditt27";
+$password = "asdf1234";
+$dbname = "id4891206_aditbelajarweb";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,8 +20,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Teknologi Informasi - ITS</title>
-  <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
-  <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+  <meta name="description" content="aditbelajarweb,tk, tempat adit belajar web>
+  <meta name="keywords" content="berisi web gajelas untuk adit belajar">
 
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,300|Raleway:300,400,900,700italic,700,300,600">
   <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css">
@@ -127,29 +142,21 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
-            <h2 class="service-title pad-bt15">PROFIL LULUSAN</h2>
+              <h2 class="service-title pad-bt15">PROFIL LULUSAN</h2>
           </div>
           <hr class="bottom-line">
-          <div class="col-md-6 col-sm-6 col-xs-12 portfolio-item padding-right-zero mr-btn-15">
-                <h2>Spesialis Keamanan Siber</h2>
-                <p>Cyber Security Specialist</p>
-          </div>
-          <div class="col-md-6 col-sm-6 col-xs-12 portfolio-item padding-right-zero mr-btn-15">
-                <h2>Spesialis Internet of Things</h2>
-                <p>IoT Specialist</p>
-          </div>
-          <div class="col-md-6 col-sm-6 col-xs-12 portfolio-item padding-right-zero mr-btn-15">
-                <h2>Analis Keamanan Aplikasi</h2>
-                <p>Application Security Analyst</p>
-          </div>
-          <div class="col-md-6 col-sm-6 col-xs-12 portfolio-item padding-right-zero mr-btn-15">
-                <h2>Pengembang Layanan Awan</h2>
-                <p>Cloud Service Developer</p>
-          </div>
-          <div class="col-md-6 col-sm-6 col-xs-12 portfolio-item padding-right-zero mr-btn-15">
-                <h2>Spesialis Integrasi Sistem</h2>
-                <p>System Integration Specialist</p>
-          </div>
+            <?php
+            $sql = "SELECT id, lulusan FROM profillulusan";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while($row = $result->fetch_assoc()) {
+                    echo "<div class=\"col-md-6 col-sm-6 col-xs-12 portfolio-item padding-right-zero mr-btn-15\">";
+                    echo "<h2>" . $row['lulusan'] . "</h2>";
+                    echo "</div>";
+                }
+            }
+            ?>
         </div>
       </div>
     </section>
@@ -164,24 +171,23 @@
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <h4>Komputasi Awan dan Komputasi Terdistibusi</h4>
-                    </div>
-                    <div class="item">
-                        <h4>Arsitektur Web dan Pengembangan Framework</h4>
-                    </div>
-                    <div class="item">
-                        <h4>Integrasi Perangkat Lunak dan Middleware</h4>
-                    </div>
-                    <div class="item">
-                        <h4>Rancangan Antarmuka Pengguna</h4>
-                    </div>
-                    <div class="item">
-                        <h4>Keamanan Informasi dan Jaringan</h4>
-                    </div>
-                    <div class="item">
-                        <h4>Manajemen Penyimpanan Data</h4>
-                    </div>
+                    <?php
+                    $sql = "SELECT peluangkerja FROM peluangkerja";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        // output data of each row
+                        $row = $result->fetch_assoc();
+                        echo "<div <div class=\"item active\">";
+                        echo "<h4>" . $row['peluangkerja'] . "</h4>";
+                        echo "</div>";
+                        while($row = $result->fetch_assoc()) {
+                            echo "<div <div class=\"item\">";
+                            echo "<h4>" . $row['peluangkerja'] . "</h4>";
+                            echo "</div>";
+                        }
+                    }
+                    $conn->close();
+                    ?>
                 </div>
 
                 <!-- Left and right controls -->
@@ -329,6 +335,7 @@
                   <p>Institut Teknologi Sepuluh Nopember</p>
                   <p><b id="hitcounter"></b></p>
                   <p>&copy; Baker Theme. All Rights Reserved.</p>
+                  <a href="admin.php">Admin Panel</a>
               </div>
           </div>
       </div>

@@ -865,3 +865,19 @@ h4 {
 #seleksimasuk {
   background-color: #F3F4F8;
 }
+
+#admin {
+    padding-top: 100px;
+}
+
+#admin_login_warning {
+    color: red;
+}
+
+#adminpanel {
+    padding-top: 100px;
+}
+
+.padding-20 {
+    padding: 20px;
+}
