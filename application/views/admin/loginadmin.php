@@ -15,7 +15,7 @@
         <div id="admin">
             <h2>aditbelajarweb.tk Admin Panel</h2>
             <p id="admin_login_warning"></p>
-            <form action="<?php verify()?>" method="post" role="form">
+            <form action="login/validate" method="post" role="form">
                 <div class="form-group">
                     <label for="username">Username:</label>
                     <input type="text" class="form-control" id="username" name="username">

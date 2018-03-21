@@ -264,7 +264,7 @@
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="contact-form">
-                        <form action="" method="post" role="form" class="contactForm">
+                        <form action="sendmail" method="post" role="form" class="contactForm">
                             <div class="col-md-6 padding-right-zero">
                                 <div class="form-group">
                                     <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
@@ -307,7 +307,7 @@
                     <p>Institut Teknologi Sepuluh Nopember</p>
                     <p><b id="hitcounter">Visitors Counter: <?php echo $counter?></b></p>
                     <p>&copy; Baker Theme. All Rights Reserved.</p>
-                    <a href="index.php/admin">Admin Panel</a>
+                    <a href="admin">Admin Panel</a>
                 </div>
             </div>
         </div>
@@ -324,39 +324,25 @@
 </html>
 
 <?php
-if(isset($_POST['submit'])){
-    $to = "adit393270@gmail.com";
-    $from = $_POST['email'];
-    $name = $_POST['name'];
-    $subject = $_POST['subject'];
-    $subject2 = "Copy of your form submission: " . $_POST['subject'];
-    $message = $name . " " . " wrote the following:" . "\n\n" . $_POST['message'];
-    $message2 = "Here is a copy of your message " . $name . ":\n\n" . $_POST['message'];
-
-    $headers = "From:" . $from;
-    $headers2 = "From:" . $to;
-    if(!empty($from) && !empty($name) && !empty($subject && !empty($message))) {
-        if(mail($to,$subject,$message,$headers) && mail($from,$subject2,$message2,$headers2)) {
-            echo "<script>
+$modal = $this->session->flashdata('modal');
+if($modal == 'sukses') {
+    echo "<script>
                 document.getElementById(\"modal-header-text\").innerText=\"Sukses\"; 
                 document.getElementById(\"modal-body-text\").innerText=\"Pesan anda telah terkirim\"; 
                 $(\"#myModal\").modal() 
         </script>" ;
-        } else {
-            echo "<script>
+} else if ($modal == 'error') {
+    echo "<script>
                 document.getElementById(\"modal-header-text\").innerText=\"Error\"; 
                 document.getElementById(\"modal-body-text\").innerText=\"Terjadi kesalahan dalam mengirim pesan. Mohon dicoba ulang \"; 
                 $(\"#myModal\").modal() 
         </script>" ;
-        }
-    }
-    else {
-        echo "<script>
+} else if ($modal == 'kosong') {
+    echo "<script>
                 document.getElementById(\"modal-header-text\").innerText=\"Error\"; 
                 document.getElementById(\"modal-body-text\").innerText=\"Terdapat kolom yang belum diisi ketika mengirim pesan. \"; 
                 $(\"#myModal\").modal() 
         </script>" ;
-    }
 }
 ?>
 
