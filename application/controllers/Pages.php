@@ -21,6 +21,8 @@ class Pages extends CI_Controller {
 
         if($page === 'home') {
             //hitcounter for homepage
+            $date = getdate();
+
             $hitcounter = (int)file_get_contents(APPPATH.'/logs/hitcounter.txt');
             $plushitcounter = $hitcounter+1;
             file_put_contents(APPPATH.'/logs/hitcounter.txt',$plushitcounter);

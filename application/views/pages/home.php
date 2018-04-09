@@ -307,7 +307,7 @@
                     <p>Institut Teknologi Sepuluh Nopember</p>
                     <p><b id="hitcounter">Visitors Counter: <?php echo $counter?></b></p>
                     <p>&copy; Baker Theme. All Rights Reserved.</p>
-                    <a href="admin">Admin Panel</a>
+                    <a href="login">Admin Panel</a>
                 </div>
             </div>
         </div>
