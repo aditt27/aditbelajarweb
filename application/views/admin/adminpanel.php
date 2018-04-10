@@ -9,6 +9,8 @@
     <link href="<?php echo base_url('assets/css/style.css') ?>" rel="stylesheet">
     <script src="<?php echo base_url('assets/js/jquery.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
+    <script src="<?php echo base_url('assets/js/jquery.table2excel.js') ?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 </head>
 <body>
 <div class="jumbotron padding-20">
@@ -17,9 +19,45 @@
     </div>
 </div>
 <div class="container">
+    <canvas id="myChart" width="400" height="100"></canvas>
+    <script>
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Profil Lulusan", "Peluang Kerja"],
+                datasets: [{
+                    data: [<?php echo count($profil)?>, <?php echo count($peluang)?>],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                legend: { display: false },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                },
+                title: {
+                    display: true,
+                    text: 'Jumlah Data'
+                }
+            }
+        });
+    </script>
     <div id="profillulusanadmin">
-        <h2>Profil Lulusan</h2>
-        <table class="table">
+        <h2 class="col-md-6">Profil Lulusan</h2>
+        <table class="table" id="profillulusan">
             <thead>
             <tr>
                 <th>id</th>
@@ -35,7 +73,9 @@
             </tbody>
         </table>
         <button data-toggle="collapse" data-target="#editprofillulusan" class="btn btn-default pull-right">Edit</button>
-        </br>
+        <button class="btn btn-default" id="plbutton">Download to Excel</button>
+        <br>
+        <br>
         <div id="editprofillulusan" class="collapse">
             <form action="admin/addlulusanitem" method="post">
                 <div class="form-group">
@@ -63,9 +103,9 @@
         </div>
     </div>
 
-    <div id="peluangkerjaadmin">
+    <br id="peluangkerjaadmin">
         <h2>Peluang Kerja</h2>
-        <table class="table">
+        <table class="table" id="peluangkerja">
             <thead>
             <tr>
                 <th>id</th>
@@ -80,8 +120,10 @@
             ?>
             </tbody>
         </table>
+        <button class="btn btn-default" id="pkbutton">Download to Excel</button>
         <button data-toggle="collapse" data-target="#editpeluangkerja" class="btn btn-default pull-right">Edit</button>
-        </br>
+        <br>
+        <br>
         <div id="editpeluangkerja" class="collapse">
             <form action="admin/addpeluangitem" method="post">
                 <div class="form-group">
@@ -110,8 +152,22 @@
     </div>
     </br>
     </br>
-
 </div>
+<script>
+    $("#plbutton").click(function(){
+        $("#profillulusan").table2excel({
+            name: "Profil Lulusan",
+            filename: "profillulusan" //do not include extension
+        });
+    });
+
+    $("#pkbutton").click(function(){
+        $("#peluangkerja").table2excel({
+            name: "Peluang Kerja",
+            filename: "peluangkerja" //do not include extension
+        });
+    });
+</script>
 </body>
 </html>
 
